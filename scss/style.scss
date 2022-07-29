@@ -1,0 +1,284 @@
+// Файл обнуляющих стилей
+@import "nullstyle.scss";
+
+html,
+body {
+  font-family: "Lato";
+  font-style: normal;
+  /* overflow: hidden; */
+  min-height: 2000px;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.header {
+  z-index: 200;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 43px;
+  overflow-x: hidden;
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 20px;
+  }
+
+  &__logo {
+    font-weight: 400;
+    font-size: calc(14px + 10 * ((100vw - 320px) / (1280 - 320)));
+    line-height: 30px;
+    color: #ffffff;
+  }
+}
+
+.burger {
+  position: relative;
+  width: 30px;
+  height: 20px;
+  background: transparent;
+  display: none;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transition: all 0.2s linear;
+  }
+  &::before {
+    top: 0px;
+  }
+  &::after {
+    bottom: 0px;
+  }
+  &__line {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+  }
+}
+//--------------------------------------------------------------------------------
+.burger--active .burger__line {
+  opacity: 0;
+}
+.burger--active::before {
+  top: 50%;
+  transform: rotate(45deg);
+}
+.burger--active::after {
+  transform: rotate(-45deg);
+  top: 50%;
+}
+
+//--------------------------------------------------------------------------------
+.menu {
+  flex-basis: 291px;
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__item {
+    flex-basis: 93px;
+    text-align: center;
+    &:not(:first-child) {
+      /* margin-left: 40px; */
+    }
+  }
+
+  &__link {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #999999;
+    text-transform: uppercase;
+    transition: all 0.2s linear;
+    &:hover {
+      letter-spacing: 1px;
+      color: #00d6b4;
+    }
+  }
+}
+
+/* === Hero ============================================== */
+
+.hero {
+  position: relative;
+
+  min-width: 100%;
+  z-index: 1;
+
+  &__fon {
+    width: 100%;
+    min-height: 540px;
+    object-fit: cover;
+  }
+
+  &__inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    text-align: center;
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: calc(26px + 22 * ((100vw - 320px) / (1280 - 320)));
+    line-height: 53px;
+    text-align: center;
+    max-width: 600px;
+    color: #ffffff;
+  }
+
+  &__btn-link {
+    overflow: hidden;
+    position: relative;
+
+    display: inline-block;
+    padding: 10px 26px;
+    color: #00d6b4;
+    border: 1px solid #00d6b4;
+    border-radius: 5px;
+    &:after {
+      content: "";
+      position: absolute;
+      height: 135px;
+      width: 50px;
+      left: -75px;
+      top: -50px;
+
+      background: #fff;
+      opacity: 0.2;
+
+      transform: rotate(35deg);
+      transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+
+      z-index: -10;
+    }
+  }
+
+  &__btn-link:hover {
+    &:after {
+      left: 120%;
+      transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+    }
+  }
+}
+
+/* === Works =========================================================== */
+
+.works {
+  background-color: #222222;
+  &__inner {
+    padding-top: 33px;
+    padding-bottom: 80px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(50px, 300px));
+    grid-template-rows: repeat(3, minmax(50px, 1fr));
+    grid-column-gap: 20px;
+    grid-row-gap: 22px;
+  }
+
+  &__img {
+    width: 100%;
+    object-fit: cover;
+  }
+  &__title {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    color: #ffffff;
+  }
+}
+
+.footer {
+  text-align: center;
+  background-color: #222222;
+  &__logo {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+
+    text-transform: uppercase;
+    color: #c2c2c2;
+    display: block;
+
+    padding-top: 36px;
+    margin-bottom: 10px;
+  }
+  &__link {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: #999999;
+    display: block;
+    padding-bottom: 37px;
+  }
+}
+/* === Media ========================================================================== */
+@media (max-width: 815px) {
+  .hero__inner {
+    width: 400px;
+  }
+  .hero__title {
+    line-height: 40px;
+  }
+  .menu__link {
+    /* display: none; */
+  }
+  .burger {
+    display: block;
+  }
+  .menu {
+    margin-top: 83px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+    padding: 30px;
+    width: 60%;
+    max-width: 260px;
+    background-color: #222222;
+    transform: translateX(100%);
+    transition: all 0.6s ease-in-out;
+
+    height: 180px;
+    /* overflow-y: auto; */
+  }
+  .menu--visible {
+    transform: none;
+  }
+  .menu__list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .menu__item {
+    flex-basis: 0;
+    margin-bottom: 30px;
+  }
+  .menu__link {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero__inner {
+    width: 250px;
+  }
+}
