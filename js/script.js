@@ -3,13 +3,13 @@ const menu = document.querySelector('[data-menu');
 const menuItems = menu.querySelectorAll('a')
 
 burger.addEventListener('click', () => {
-    burger.classList.toggle('burger--active');
-    menu.classList.toggle('menu--visible');
+    burger.classList.toggle('burger__active');
+    menu.classList.toggle('menu__visible');
 })
 
 menuItems.forEach(el => {
     el.addEventListener('click', () => {
-        burger.classList.remove('burger--active');
-        menu.classList.remove('menu--visible');
+        burger.classList.remove('burger__active');
+        menu.classList.remove('menu__visible');
     })
 })
